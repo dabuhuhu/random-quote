@@ -4,11 +4,10 @@ const newQuoteBtn = document.getElementById("new-quote-btn");
 newQuoteBtn.addEventListener("click", getNewQuote);
 
 function getNewQuote() {
-    fetch("https://api-ninjas.com/api/quotes")
+    fetch("https://api.quotable.io/random")
         .then((response) => response.json())
         .then((data) => {
-            const randomIndex = Math.floor(Math.random() * data.length);
-            const randomQuote = data[randomIndex].quote;
+            const randomQuote = data.content;
             quoteText.textContent = randomQuote;
         })
         .catch((error) => {
